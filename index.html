@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Telegram Do'kon Boti — Do'koningizni Telegram'ga ko'chiring</title>
+<style>
+  :root {
+    --primary: #2AABEE;
+    --primary-dark: #1b8cc4;
+    --dark: #0f1923;
+    --text: #2b3a4a;
+    --bg: #f5f8fb;
+    --card: #ffffff;
+    --green: #25a868;
+    --border: #e3ecf3;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+  .container { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, #2AABEE 0%, #1579c1 100%);
+    color: #fff;
+    text-align: center;
+    padding: 70px 20px 60px;
+  }
+  .hero .badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.35);
+    padding: 6px 16px;
+    border-radius: 999px;
+    font-size: 14px;
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+  .hero h1 { font-size: 40px; line-height: 1.2; margin-bottom: 14px; font-weight: 800; }
+  .hero p { font-size: 18px; opacity: 0.95; max-width: 640px; margin: 0 auto 28px; }
+  .btn {
+    display: inline-block;
+    background: #fff;
+    color: var(--primary-dark);
+    font-weight: 700;
+    padding: 14px 34px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 17px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    transition: transform .15s;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn.telegram { background: #fff; color: var(--primary-dark); }
+  .hero .demo-note { margin-top: 14px; font-size: 14px; opacity: 0.9; }
+
+  /* Sections */
+  section { padding: 56px 0; }
+  h2 { font-size: 28px; text-align: center; margin-bottom: 12px; color: var(--dark); font-weight: 800; }
+  .subtitle { text-align: center; color: #5c7183; margin-bottom: 36px; }
+
+  .features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+  }
+  .feature {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 22px;
+    box-shadow: 0 4px 14px rgba(15,25,35,0.04);
+  }
+  .feature .icon { font-size: 30px; margin-bottom: 10px; }
+  .feature h3 { font-size: 17px; margin-bottom: 6px; color: var(--dark); }
+  .feature p { font-size: 14px; color: #5c7183; }
+
+  /* Pricing */
+  .pricing {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .price-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 30px;
+    text-align: center;
+  }
+  .price-card.hot {
+    border: 2px solid var(--primary);
+    box-shadow: 0 10px 30px rgba(42,171,238,0.18);
+  }
+  .price-card .tag {
+    display: inline-block;
+    background: #e8f6ff;
+    color: var(--primary-dark);
+    font-size: 13px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 999px;
+    margin-bottom: 14px;
+  }
+  .price-card h3 { font-size: 19px; color: var(--dark); }
+  .price-card .amount { font-size: 34px; font-weight: 800; color: var(--dark); margin: 10px 0 4px; }
+  .price-card .period { font-size: 14px; color: #5c7183; margin-bottom: 16px; }
+  .price-card ul { list-style: none; text-align: left; font-size: 14px; margin: 0 0 18px; }
+  .price-card ul li { padding: 5px 0; border-bottom: 1px dashed var(--border); }
+  .price-card ul li:last-child { border-bottom: none; }
+  .price-card .cta {
+    display: block;
+    background: var(--primary);
+    color: #fff;
+    font-weight: 700;
+    padding: 12px;
+    border-radius: 12px;
+    text-decoration: none;
+  }
+  .price-card.hot .cta { background: var(--primary); }
+
+  /* Steps */
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px; }
+  .step { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; text-align: center; }
+  .step .num {
+    width: 44px; height: 44px; margin: 0 auto 12px;
+    background: var(--primary); color: #fff; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; font-weight: 800;
+  }
+  .step h3 { font-size: 16px; margin-bottom: 6px; color: var(--dark); }
+  .step p { font-size: 14px; color: #5c7183; }
+
+  /* Referral */
+  .referral {
+    background: linear-gradient(135deg, #25a868 0%, #1d8a55 100%);
+    color: #fff;
+    text-align: center;
+    padding: 50px 20px;
+    border-radius: 20px;
+  }
+  .referral h2 { color: #fff; }
+  .referral p { font-size: 17px; max-width: 600px; margin: 0 auto 6px; }
+  .referral .big { font-size: 24px; font-weight: 800; margin-top: 10px; }
+
+  /* CTA final */
+  .final-cta { text-align: center; }
+  .final-cta h2 { margin-bottom: 8px; }
+  .final-cta .contact-line { font-size: 17px; margin-bottom: 24px; }
+
+  footer {
+    text-align: center;
+    padding: 30px 20px;
+    color: #7b8fa1;
+    font-size: 13px;
+    border-top: 1px solid var(--border);
+    background: #fff;
+  }
+
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 30px; }
+    .hero { padding: 50px 16px 44px; }
+    section { padding: 40px 0; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="container">
+      <span class="badge">🚀 Tayyor Telegram Do'kon Boti</span>
+      <h1>Do'koningizni Telegram'ga ko'chiring</h1>
+      <p>Mahsulot katalogi, savat va buyurtma — hammasi mijozingizning Telegram'ida. 24/7 ishlaydi, sotuvni avtomatlashtiradi.</p>
+      <a class="btn telegram" href="https://t.me/internet_dokon_bot" target="_blank">🔗 Demo botni sinab ko'ring</a>
+      <div class="demo-note">Demo bot: katalog → savat → buyurtma jarayonini ko'ring</div>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <section>
+    <div class="container">
+      <h2>Botda nima bor?</h2>
+      <p class="subtitle">Mijoz uchun qulay, siz uchun avtomatik</p>
+      <div class="features">
+        <div class="feature"><div class="icon">🛍️</div><h3>Mahsulot katalogi</h3><p>Kategoriyalar, rasmlar galereyasi va batafsil tavsiflar.</p></div>
+        <div class="feature"><div class="icon">🛒</div><h3>Savat va buyurtma</h3><p>Mijoz 3 bosqichda buyurtma beradi: ism, telefon, manzil.</p></div>
+        <div class="feature"><div class="icon">🔔</div><h3>Darhol xabar</h3><p>Har bir yangi buyurtma haqida sizga Telegram'da darhol xabar keladi.</p></div>
+        <div class="feature"><div class="icon">📦</div><h3>Buyurtma holati</h3><p>Mijozga "qabul qilindi, yo'lda, yetkazildi" holatini yuborasiz.</p></div>
+        <div class="feature"><div class="icon">⚙️</div><h3>Oson admin panel</h3><p>Mahsulot qo'shish, narx o'zgartirish — Telegram orqali o'zingiz boshqarasiz.</p></div>
+        <div class="feature"><div class="icon">📊</div><h3>Statistika</h3><p>Buyurtmalar va tushum statistikasi har doim qo'lingizda.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section style="background:#fff">
+    <div class="container">
+      <h2>Narxlar</h2>
+      <p class="subtitle">Hech qanday yashirin to'lovsiz</p>
+      <div class="pricing">
+        <div class="price-card">
+          <span class="tag">O'rnatish</span>
+          <h3>Do'konni ishga tushirish</h3>
+          <div class="amount">2 500 000 so'm</div>
+          <div class="period">bir martalik</div>
+          <ul>
+            <li>✅ Bot yaratish va sozlash</li>
+            <li>✅ 50 tagacha mahsulot yuklash</li>
+            <li>✅ Rasm galereyasi</li>
+            <li>✅ Hosting va joylashtirish</li>
+            <li>✅ 1 oy bepul qo'llab-quvvatlash</li>
+            <li>✅ Foydalanuvchi yo'riqnomasi</li>
+          </ul>
+          <a class="cta" href="#contact">Boshlash</a>
+        </div>
+        <div class="price-card hot">
+          <span class="tag">Oylik xizmat</span>
+          <h3>Do'kon har doim ishlaydi</h3>
+          <div class="amount">150 000 so'm</div>
+          <div class="period">har oy</div>
+          <ul>
+            <li>✅ Hosting va ishonchli ishlash</li>
+            <li>✅ Har kuni ma'lumotlar zaxirasi</li>
+            <li>✅ Yangilanishlar</li>
+            <li>✅ Cheksiz texnik yordam</li>
+            <li>✅ Mahsulot qo'shish yordami</li>
+            <li>✅ Yangi buyurtma xabarlari</li>
+          </ul>
+          <a class="cta" href="#contact">Ulanish</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEPS -->
+  <section>
+    <div class="container">
+      <h2>Qanday ishlaydi?</h2>
+      <p class="subtitle">3 oddiy bosqich</p>
+      <div class="steps">
+        <div class="step"><div class="num">1</div><h3>Murojaat qilasiz</h3><p>Biz bilan bog'lanib, do'koningiz haqida gapirasiz.</p></div>
+        <div class="step"><div class="num">2</div><h3>Bot tayyorlanadi</h3><p>3-5 kun ichida bot tayyor bo'ladi va mahsulotlaringiz yuklanadi.</p></div>
+        <div class="step"><div class="num">3</div><h3>Sotuvni boshlaysiz</h3><p>Mijozlaringizga bot linkini yuborasiz — buyurtmalar kela boshlaydi.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REFERRAL -->
+  <section>
+    <div class="container">
+      <div class="referral">
+        <h2>🎁 Referal dasturi</h2>
+        <p>Do'stingizga Telegram do'kon botini tavsiya qiling —</p>
+        <div class="big">1 oy xizmat BEPUL</div>
+        <p style="margin-top:10px;font-size:14px;opacity:0.9">Har bir olib kelgan mijoz uchun</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section id="contact" class="final-cta">
+    <div class="container">
+      <h2>Do'koningiz tayyor bo'lsin</h2>
+      <p class="contact-line">Bugun boshlang — birinchi buyurtma ertaga kelishi mumkin. 🚀</p>
+      <a class="btn telegram" href="https://t.me/internet_dokon_bot" target="_blank">✈️ Telegram'da yozing</a>
+    </div>
+  </section>
+
+  <footer>
+    Telegram Do'kon Boti xizmati &copy; 2026 &mdash; Demo bot: <a href="https://t.me/internet_dokon_bot" target="_blank">@internet_dokon_bot</a>
+  </footer>
+</body>
+</html>
