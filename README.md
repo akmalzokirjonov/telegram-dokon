@@ -2,6 +2,8 @@
 
 A responsive Uzbek-language landing page for a ready-to-use Telegram storefront bot. The page presents the product's features, pricing, setup flow, referral offer, and contact call-to-action in a compact single-page format.
 
+This repository contains the marketing website. The Telegram bot backend and order-processing service are maintained separately.
+
 ## Live demo
 
 **[Open Telegram Do'kon](https://akmalzokirjonov.github.io/telegram-dokon/)**
@@ -14,6 +16,8 @@ A responsive Uzbek-language landing page for a ready-to-use Telegram storefront 
 - Referral section and clear calls to action
 - Fast static deployment with GitHub Pages
 - No build tools or runtime dependencies
+- Keyboard focus, a skip-to-content link, and reduced-motion support
+- Search and social-sharing metadata
 
 ## Built with
 

@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Telegram Do'kon Boti — Do'koningizni Telegram'ga ko'chiring</title>
+<meta name="description" content="Telegram do'kon boti: mahsulot katalogi, savat va buyurtmalar uchun tayyor yechim. Imkoniyatlar, tariflar va demo bilan tanishing.">
+<meta name="theme-color" content="#2AABEE">
+<link rel="canonical" href="https://akmalzokirjonov.github.io/telegram-dokon/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Telegram Do'kon Boti">
+<meta property="og:description" content="Do'koningizni Telegram'ga ko'chiring: katalog, savat va buyurtma jarayoni.">
+<meta property="og:url" content="https://akmalzokirjonov.github.io/telegram-dokon/">
+<meta name="twitter:card" content="summary">
 <style>
   :root {
     --primary: #2AABEE;
@@ -16,6 +24,12 @@
     --border: #e3ecf3;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  :focus-visible { outline: 3px solid #0f1923; outline-offset: 4px; }
+  .skip-link { position: absolute; top: -60px; left: 16px; background: #fff; color: #0f1923; padding: 10px 16px; z-index: 10; }
+  .skip-link:focus { top: 16px; }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition: none !important; animation: none !important; }
+  }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
     background: var(--bg);
@@ -172,6 +186,8 @@
 </style>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Asosiy mazmunga o'tish</a>
+  <main id="main-content" tabindex="-1">
 
   <!-- HERO -->
   <div class="hero">
@@ -274,6 +290,7 @@
     </div>
   </section>
 
+  </main>
   <footer>
     Telegram Do'kon Boti xizmati &copy; 2026 &mdash; Demo bot: <a href="https://t.me/internet_dokon_bot" target="_blank" rel="noopener noreferrer">@internet_dokon_bot</a>
   </footer>
